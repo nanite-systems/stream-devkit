@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    networks:
+      - ns-stream
+    ports:
+      - "5672:${RABBITMQ_PORT:-5672}"
+      - "15672:${RABBITMQ_MANAGEMENT_PORT:-15672}"
+    env_file: .env
+
+networks:
+  ns-stream:
